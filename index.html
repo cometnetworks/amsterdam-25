@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amsterdam 25 - Presentación Inmobiliaria Premium</title>
+    <!-- SEO Meta Tags --><meta name="description" content="Descubre Amsterdam 25, un proyecto residencial de lujo con 24 departamentos en el corazón de Hipódromo Condesa, CDMX.">
+    <meta name="keywords" content="Amsterdam 25, Inmobiliaria, Lujo, Departamentos, Hipódromo Condesa, CDMX, Inversión">
+    
+    <!-- Estilos CSS en línea para un único archivo estático --><style>
+        :root {
+            --color-background: #121212;
+            --color-text: #EAEAEA;
+            --color-primary: #D4AF37; /* Un tono de oro premium */
+            --color-primary-dark: #B8860B;
+            --color-card-bg: #1E1E1E;
+            --color-border: #333333;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Crítico para el slider */
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            scroll-behavior: smooth;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slides-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Contenedor de todos los slides, se moverá horizontalmente */
+        .slides-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            /* La magia de la transición horizontal */
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        /* Estilo base para cada slide */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0; /* Evita que los slides se encojan */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px; /* Espacio para que el contenido respire */
+        }
+
+        /* --- Slide 1: Hero --- */
+        .hero-slide {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-slide video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            opacity: 0.25; /* Más visible */
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(18,18,18,0.2) 0%, rgba(18,18,18,0.8) 70%, var(--color-background) 95%); /* Más claro arriba */
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .logo-group img {
+            height: 50px; /* Un poco más pequeño y elegante */
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+            color: var(--color-primary);
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-content .tagline {
+            font-size: clamp(1.2rem, 4vw, 1.75rem);
+            color: var(--color-text);
+            font-weight: 300;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-info {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            line-height: 1.7;
+            color: #BDBDBD;
+            font-weight: 400;
+        }
+
+        .hero-info p {
+            margin: 8px 0;
+        }
+
+        .hero-info .highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: var(--color-primary);
+            color: #000;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- Slides de Contenido --- */
+        .content-slide {
+            padding: clamp(40px, 8vw, 80px);
+            overflow-y: auto; /* Permite scroll si el contenido excede */
+            overflow-x: hidden;
+            display: block; /* Para permitir scroll interno */
+            text-align: center; /* Centrar contenido por defecto */
+        }
+
+        .content-slide h2 {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--color-primary);
+            letter-spacing: -1px;
+        }
+
+        .content-slide .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #BDBDBD;
+            text-align: center;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: left; /* Contenido de las tarjetas a la izquierda */
+        }
+
+        .card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            /* Un borde de acento sutil */
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .card:hover {
+            border-color: var(--color-primary);
+            background: #252525;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card p, .card li {
+            color: #C0C0C0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .card li {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+        
+        /* Checkmark de acento */
+        .card li:before {
+            content: "✓";
+            color: var(--color-primary);
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Contenedor de Video (énfasis) --- */
+        .video-thumbnail-wrapper {
+            max-width: 900px; /* Para videos individuales */
+            width: 100%;
+            height: clamp(200px, 50vh, 450px); /* Altura controlada */
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
+            background: #000;
+            position: relative;
+            cursor: pointer; /* Indicar que es clickeable */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-thumbnail-wrapper:hover {
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--color-primary);
+            transform: scale(1.02);
+        }
+
+        .video-thumbnail-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #000;
+            pointer-events: none; /* Evita que el click se vaya al video */
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Eliminado el fondo oscuro */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-thumbnail-wrapper:hover .play-overlay {
+            opacity: 1; /* Siempre visible para indicar interacción */
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #000;
+            pointer-events: none; /* No interactúa directamente */
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            display: none; /* Icono de Play eliminado */
+        }
+        
+        /* --- Galería de Videos e Imágenes --- */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más compacto */
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--color-border);
+            aspect-ratio: 16/9; /* Proporción de video común */
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--color-primary);
+            z-index: 10;
+        }
+        
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        
+        /* Imagen de plano */
+        .plan-image-container {
+            max-width: 700px; /* Tamaño ajustado */
+            width: 100%;
+            max-height: 70vh; /* Para que quepa en pantalla */
+            margin: 0 auto;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-image-container img {
+            width: 100%;
+            height: auto; /* Ajuste automático de altura */
+            object-fit: contain; /* Contener la imagen sin recortar */
+            display: block;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+            color: #fff;
+            padding: 25px 15px 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        /* --- Layout para Galería de 5 Videos (Slide 5) --- */
+        .gallery-layout-5 {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar todo */
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px; /* Ancho total del layout */
+            margin: 0 auto;
+        }
+        .gallery-layout-5 .gallery-item {
+             width: 100%; /* Todos los items ocupan el ancho de su contenedor */
+        }
+        .gallery-layout-5 .top-video-container {
+            width: 100%;
+            max-width: 700px; /* El video de arriba es más grande */
+        }
+        .gallery-layout-5 .video-pair-container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px; /* Las parejas son un poco más anchas */
+        }
+        .gallery-layout-5 .video-pair-container .gallery-item {
+            flex: 1; /* Dos videos por fila */
+        }
+
+        /* --- Tabla de Inversión --- */
+        .investment-table {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: left; /* Contenido de tabla a la izquierda */
+        }
+
+        .investment-table-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 1rem;
+        }
+
+        .investment-table-row:last-child {
+            border-bottom: none;
+        }
+        
+        /* Fila de Total */
+        .investment-table-row.total {
+            background: rgba(212, 175, 55, 0.05);
+            font-weight: 700;
+            border-top: 2px solid var(--color-primary);
+        }
+
+        .investment-table-row .label {
+            color: #C0C0C0;
+            font-weight: 500;
+        }
+
+        .investment-table-row .value {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .investment-table-row.total .label {
+            color: var(--color-text);
+            font-size: 1.1rem;
+        }
+        .investment-table-row.total .value {
+             color: var(--color-primary);
+             font-size: 1.3rem;
+             font-weight: 700;
+        }
+
+        /* --- Navegación (Flechas al CENTRO) --- */
+        .nav-container {
+            position: fixed;
+            /* Centrado vertical */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 20;
+            pointer-events: none; /* Permite click "a través" */
+        }
+
+        .nav-button {
+            background: rgba(18, 18, 18, 0.5);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all; /* Los botones sí son clickeables */
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: var(--color-primary);
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            border-color: var(--color-border);
+            color: var(--color-border);
+        }
+
+        /* --- Controles Superiores (Contador, Audio) --- */
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--color-border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            z-index: 20;
+            backdrop-filter: blur(5px);
+        }
+
+        .audio-toggle {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            backdrop-filter: blur(5px);
+        }
+
+        .audio-toggle:hover {
+            background: var(--color-primary);
+            color: #000;
+            border-color: var(--color-primary);
+        }
+
+        /* --- Slide de Contacto --- */
+        .contact-content {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            width: 100%;
+            margin: auto; /* Centrar el contenido */
+        }
+
+        .contact-content .subtitle {
+            margin-bottom: 60px;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+            color: #888;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        
+        .footer p {
+            margin-top: 5px;
+            color: var(--color-primary);
+            opacity: 0.7;
+        }
+
+        /* --- Scrollbar Personalizado (para slides con scroll) --- */
+        .content-slide::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content-slide::-webkit-scrollbar-track {
+            background: var(--color-card-bg);
+        }
+
+        .content-slide::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 4px;
+        }
+
+        .content-slide::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* --- Modal para videos --- */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            height: 80%;
+            max-height: 500px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .video-modal-content video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ajusta el video al modal */
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-primary);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-modal-close:hover {
+            background: var(--color-primary-dark);
+        }
+
+        /* --- Responsividad --- */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 60px 20px; /* Menos padding en móvil */
+            }
+
+            .content-slide {
+                padding: 60px 20px 80px 20px; /* Más padding abajo para el scroll */
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .media-gallery {
+                grid-template-columns: repeat(2, 1fr); /* 2x2 en móvil para Slide 8 */
+                gap: 15px;
+            }
+
+            /* Hacemos que los videos de la galería no sean cuadrados en móvil */
+            .gallery-item {
+                aspect-ratio: 16/9; /* Sigue proporción de video */
+            }
+
+            .nav-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .slide-counter {
+                top: 20px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .audio-toggle {
+                top: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+
+            .gallery-layout-5 .video-pair-container {
+                flex-direction: column; /* Apila los videos en móvil */
+            }
+
+            .video-modal-content {
+                width: 95%;
+                height: auto;
+                max-height: 80vh;
+            }
+            
+            .video-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="presentation-container">
+        <div class="slides-wrapper">
+            <div class="slides-container" id="slidesContainer">
+
+                <!-- Slide 1: Hero --><section class="slide hero-slide" data-slide="0">
+                    <video autoplay muted loop playsinline>
+                        <!-- Video de portada --><source src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038989/AMpro8_fgaybs.mov" type="video/mp4">
+                    </video>
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <div class="logo-group">
+                            <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1761891745/img8_johvzg.png" alt="Logo HR">
+                            <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1761891755/Captura_de_pantalla_2025-10-30_a_la_s_11.06.58_p.m._wxugr3.png" alt="Logo INVI">
+                        </div>
+                        <h1>Amsterdam 25</h1>
+                        <p class="tagline">Proyecto Residencial de Lujo</p>
+                        <div class="hero-info">
+                            <p><span class="highlight">24 DEPARTAMENTOS</span> de 65m² cada uno</p>
+                            <p><span class="highlight">3 TORRES</span> con 8 niveles cada una</p>
+                            <p>Hipódromo Condesa, Cuauhtémoc, CDMX</p>
+                        </div>
+                        <button class="cta-button" onclick="nextSlide()">Explora el Proyecto</button>
+                    </div>
+                </section>
+
+                <!-- Slide 2: Ubicación --><section class="slide content-slide" data-slide="1">
+                    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+                        <h2>Ubicación Estratégica</h2>
+                        <p class="subtitle">En el Corazón de Hipódromo Condesa</p>
+                        
+                        <div class="content-grid">
+                            <div class="video-thumbnail-wrapper" style="grid-column: span 1 / span 1;" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038900/AMpro2_ivjo9d.mov">
+                                <!-- Video de ubicación --><video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038900/AMpro2_ivjo9d.mov"></video>
+                                <div class="play-overlay"><span class="play-button">▶</span></div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+                                <div class="card">
+                                    <h3>Ubicación Premium</h3>
+                                    <p>En la exclusiva colonia Hipódromo Condesa, rodeado de comercios y servicios de clase mundial. Una de las zonas más codiciadas de la Ciudad de México.</p>
+                                </div>
+                                <div class="card">
+                                    <h3>Transporte Accesible</h3>
+                                    <p>Próximo a Metro Sevilla y principales vías de comunicación. Acceso fácil a toda la ciudad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 3: El Proyecto --><section class="slide content-slide" data-slide="2">
+                     <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+                        <h2>El Proyecto</h2>
+                        <p class="subtitle">24 Departamentos en 3 Torres Modernas</p>
+                        
+                        <div class="content-grid">
+                            <div class="card">
+                                <h3>Especificaciones</h3>
+                                <ul>
+                                    <li>24 Departamentos de 65m² cada uno</li>
+                                    <li>3 Torres con 8 niveles cada una</li>
+                                    <li>3 Recámaras amplias</li>
+                                    <li>Sala y Comedor integrados</li>
+                                    <li>Cocina moderna equipada</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h3>Amenidades Incluidas</h3>
+                                <ul>
+                                    <li>Balcón en cada departamento</li>
+                                    <li>Elevador en cada torre</li>
+                                    <li>Estacionamiento asignado</li>
+                                    <li>Acabados Premium</li>
+                                    <li>Diseño Contemporáneo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Concepto y Diseño (Video más pequeño con lightbox) --><section class="slide content-slide" data-slide="3">
+                    <div style="width: 100%; max-width: 1100px; margin: 0 auto; text-align: center;">
+                        <h2>Concepto y Diseño</h2>
+                        <p class="subtitle">Arquitectura Vanguardista y Sostenible</p>
+                        
+                        <div class="video-thumbnail-wrapper" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038885/AMpro1_eeirvc.mov">
+                             <!-- Video de concepto/render --><video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038885/AMpro1_eeirvc.mov"></video>
+                            <div class="play-overlay"><span class="play-button">▶</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 5: Galería de Interiores (5 VIDEOS EN GRID con lightbox) --><section class="slide content-slide" data-slide="4">
+                    <div style="width: 100%; max-width: 1400px; margin: 0 auto;">
+                        <h2>Galería de Interiores</h2>
+                        <p class="subtitle">Espacios Diseñados con Lujo y Confort</p>
+                        
+                        <div class="gallery-layout-5">
+                            <!-- Video 1 (Arriba) -->
+                            <div class="top-video-container">
+                                <div class="gallery-item" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038914/AMpro3_or2mko.mov">
+                                    <video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038914/AMpro3_or2mko.mov"></video>
+                                    <div class="play-overlay"><span class="play-button small">▶</span></div>
+                                </div>
+                            </div>
+                            <!-- Par 1 (Videos 2 y 3) -->
+                            <div class="video-pair-container">
+                                <div class="gallery-item" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038931/AMpro4_cjd0e4.mov">
+                                    <video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038931/AMpro4_cjd0e4.mov"></video>
+                                    <div class="play-overlay"><span class="play-button small">▶</span></div>
+                                </div>
+                                <div class="gallery-item" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038946/AMpro5_bjjr9q.mov">
+                                    <video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038946/AMpro5_bjjr9q.mov"></video>
+                                    <div class="play-overlay"><span class="play-button small">▶</span></div>
+                                </div>
+                            </div>
+                            <!-- Par 2 (Videos 4 y 5) -->
+                            <div class="video-pair-container">
+                                <div class="gallery-item" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038959/AMpro6_c1ww6k.mov">
+                                    <video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038959/AMpro6_c1ww6k.mov"></video>
+                                    <div class="play-overlay"><span class="play-button small">▶</span></div>
+                                </div>
+                                <div class="gallery-item" data-video-src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038972/AMpro7_sh1aow.mov">
+                                    <video muted loop playsinline src="https://res.cloudinary.com/dtlpkbbcp/video/upload/v1762038972/AMpro7_sh1aow.mov"></video>
+                                    <div class="play-overlay"><span class="play-button small">▶</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 6: Planos (Plano más pequeño sin scroll) --><section class="slide content-slide" data-slide="5">
+                    <div style="width: 100%; max-width: 1000px; margin: 0 auto;">
+                        <h2>Planos y Distribución</h2>
+                        <p class="subtitle">Diseño Inteligente de Espacios</p>
+                        
+                        <div class="plan-image-container">
+                            <!-- Plano arquitectónico --><img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1762038818/planoam_ts9jwc.jpg" alt="Plano arquitectónico del departamento">
+                        </div>
+                        <div class="card" style="margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                            <h3>Distribución Óptima</h3>
+                            <p>Cada departamento cuenta con una distribución inteligente que maximiza el uso del espacio. Amplios espacios comunes, recámaras generosas y áreas de servicio bien definidas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 7: Inversión --><section class="slide content-slide" data-slide="6">
+                    <div style="width: 100%; max-width: 800px; margin: 0 auto;">
+                        <h2>Esquema de Inversión</h2>
+                        <p class="subtitle">Financiamiento Flexible en 3 Pagos</p>
+                        
+                        <div class="investment-table">
+                            <div class="investment-table-row">
+                                <span class="label">Pago Inicial (Contrato)</span>
+                                <span class="value">$230,000</span>
+                            </div>
+                            <div class="investment-table-row">
+                                <span class="label">Pago Notario (Año 1)</span>
+                                <span class="value">$150,000</span>
+                            </div>
+                            <div class="investment-table-row">
+                                <span class="label">Pago Entrega (INVI)</span>
+                                <span class="value">$150,000</span>
+                            </div>
+                            <div class="investment-table-row total">
+                                <span class="label">Inversión Total</span>
+                                <span class="value">$530,000</span>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 40px;">
+                            <h3>Seguridad Garantizada</h3>
+                            <ul>
+                                <li>Firma con agrupación Social Denmex</li>
+                                <li>Firma con notario público</li>
+                                <li>Firma con INVI a la entrega</li>
+                                <li>Términos flexibles y transparentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 8: Amenidades (Grid 2x2) --><section class="slide content-slide" data-slide="7">
+                    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+                        <h2>Amenidades y Ubicación</h2>
+                        <p class="subtitle">Servicios y Lugares de Interés Cercanos</p>
+                        
+                        <div class="media-gallery" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                            <div class="gallery-item" style="aspect-ratio: 4/3;">
+                                <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1762038811/sevilla_gtq2ir.png" alt="Metro Sevilla">
+                                <div class="gallery-item-label">Metro Sevilla</div>
+                            </div>
+                            <div class="gallery-item" style="aspect-ratio: 4/3;">
+                                <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1762038851/Parque-Me%CC%81xico-1_mml4yu.jpg" alt="Parque México">
+                                <div class="gallery-item-label">Parque México</div>
+                            </div>
+                            <div class="gallery-item" style="aspect-ratio: 4/3;">
+                                <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1762038858/Palacio-de-Hierro-Durango-1_bhjk97.jpg" alt="Palacio de Hierro">
+                                <div class="gallery-item-label">Palacio de Hierro</div>
+                            </div>
+                            <div class="gallery-item" style="aspect-ratio: 4/3;">
+                                <img src="https://res.cloudinary.com/dtlpkbbcp/image/upload/v1762038864/mercado-roma_k1ulvq.webp" alt="Mercado Roma">
+                                <div class="gallery-item-label">Mercado Roma</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 9: Contacto (Centrado y texto modificado) --><section class="slide content-slide" data-slide="8">
+                    <div class="contact-content">
+                        <h2>¿Listo para Invertir?</h2>
+                        <!-- Se eliminó el subtítulo "Agenda tu visita hoy mismo" --><!-- Link de WhatsApp --><a href="https://wa.me/5543669778?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20proyecto%20Amsterdam%2025" target="_blank" class="cta-button">
+                            Solicitar Información
+                        </a>
+                        
+                        <div class="footer">
+                            © 2025 Amsterdam 25. Todos los derechos reservados.
+                            <p>Presentación Interactiva Premium</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Controles de Navegación --><button class="audio-toggle" id="audioToggle" onclick="toggleAudio()">🔇</button>
+    
+    <nav class="nav-container">
+        <button class="nav-button" id="prevBtn" onclick="prevSlide()" title="Anterior">❮</button>
+        <button class="nav-button" id="nextBtn" onclick="nextSlide()" title="Siguiente">❯</button>
+    </nav>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+    </div>
+
+    <!-- Modal de Video --><div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="closeModal">X</button>
+            <video id="modalVideo" src="" controls playsinline></video>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slidesContainer = document.getElementById('slidesContainer');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let isMuted = true;
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const closeModalButton = document.getElementById('closeModal');
+
+        // Función principal para actualizar la vista del slide
+        function updateSlide() {
+            // TRANSICIÓN HORIZONTAL LATERAL - CÓDIGO CRÍTICO
+            // Mueve el contenedor de slides horizontalmente
+            const offset = -currentSlideIndex * 100;
+            slidesContainer.style.transform = `translateX(${offset}vw)`;
+
+            // Actualizar contador
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+
+            // Deshabilitar botones en los extremos
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+            
+            // Pausar todos los videos de los thumbnails y el modal
+            document.querySelectorAll('video').forEach(video => {
+                video.pause();
+                // Reiniciar los videos de thumbnails para que siempre empiecen desde el principio
+                if (!video.closest('.video-modal')) {
+                    video.currentTime = 0; 
+                }
+            });
+            
+            // Reproducir videos solo en el slide actual que no están en el modal
+            const currentSlideElement = slides[currentSlideIndex];
+            if (currentSlideElement) {
+                const videosInCurrentSlide = currentSlideElement.querySelectorAll('video:not(.video-modal-content video)');
+                videosInCurrentSlide.forEach(video => {
+                    video.muted = isMuted; // Aplicar estado de mute
+                    video.play().catch(e => console.error("Video play failed:", e));
+                });
+            }
+        }
+
+        // Ir al siguiente slide
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlide();
+            }
+        }
+
+        // Ir al slide anterior
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlide();
+            }
+        }
+
+        // Control de audio para todos los videos
+        function toggleAudio() {
+            isMuted = !isMuted;
+            const btn = document.getElementById('audioToggle');
+            btn.textContent = isMuted ? '🔇' : '🔊';
+            
+            // Aplicar el estado de mute a todos los videos de los thumbnails y el modal
+            document.querySelectorAll('video').forEach(video => {
+                video.muted = isMuted;
+            });
+        }
+
+        // Abrir modal de video
+        function openVideoModal(videoSrc) {
+            modalVideo.src = videoSrc;
+            modalVideo.muted = false; // Desmutear al abrir en modal
+            modalVideo.play().catch(e => console.error("Modal video play failed:", e));
+            videoModal.classList.add('active');
+            // Pausar videos de fondo cuando se abre el modal
+            document.querySelectorAll('.hero-slide video, .video-thumbnail-wrapper video, .gallery-item video').forEach(video => video.pause());
+        }
+
+        // Cerrar modal de video
+        function closeVideoModal() {
+            modalVideo.pause();
+            modalVideo.src = ""; // Limpiar src para liberar recursos
+            videoModal.classList.remove('active');
+            // Reanudar videos de fondo del slide actual
+            updateSlide(); 
+        }
+
+        // Asignar eventos de clic a los contenedores de video (thumbnails)
+        document.querySelectorAll('.video-thumbnail-wrapper, .gallery-item').forEach(wrapper => {
+            wrapper.addEventListener('click', () => {
+                const videoSrc = wrapper.dataset.videoSrc;
+                if (videoSrc) {
+                    openVideoModal(videoSrc);
+                }
+            });
+        });
+
+        // Evento para cerrar el modal
+        closeModalButton.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) { // Cierra si se hace clic fuera del contenido del video
+                closeVideoModal();
+            }
+        });
+
+        // Navegación con teclado (flechas)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && !videoModal.classList.contains('active')) {
+                e.preventDefault();
+                nextSlide();
+            }
+            if (e.key === 'ArrowLeft' && !videoModal.classList.contains('active')) {
+                e.preventDefault();
+                prevSlide();
+            }
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                e.preventDefault();
+                closeVideoModal();
+            }
+        });
+        
+        // Navegación con scroll (rueda del mouse) - Opcional pero premium
+        let lastWheelTime = 0;
+        document.addEventListener('wheel', (e) => {
+            if (videoModal.classList.contains('active')) return; // No navegar si el modal está abierto
+
+            const now = new Date().getTime();
+            // Limitar la frecuencia del scroll para evitar saltos
+            if (now - lastWheelTime < 800) return; 
+            lastWheelTime = now;
+
+            if (e.deltaY > 0) { // Scroll hacia abajo
+                nextSlide();
+            } else if (e.deltaY < 0) { // Scroll hacia arriba
+                prevSlide();
+            }
+        }, { passive: false }); // { passive: false } para poder usar preventDefault si fuera necesario
+
+        // Inicialización
+        document.getElementById('totalSlides').textContent = totalSlides;
+        updateSlide(); // Configura el estado inicial
+    </script>
+
+</body>
+</html>
+
